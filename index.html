@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>돌로미티 모자 여행 계획서</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+    <script>
+        async function loadGoogleMaps() {
+            const response = await fetch('/api-key');
+            const data = await response.json();
+            const script = document.createElement('script');
+            script.src = `https://maps.googleapis.com/maps/api/js?key=${data.apiKey}&callback=initMaps&loading=async`;
+            script.async = true;
+            document.head.appendChild(script);
+        }
+        window.onload = loadGoogleMaps;
+    </script>
+</head>
+<body>
+    <div id="map"></div>
+    <header>
+        <h1>돌로미티 모자 여행 계획서</h1>
+        <p>신체적 제약을 고려한 5박 7일 맞춤형 여행 일정</p>
+    </header>
+
+    <div class="container">
+        <section class="overview">
+            <h2>여행 개요</h2>
+            <ul>
+                <li><strong>여행자</strong>: 30대 남성(아들, 1시간 이상 연속 보행 어려움), 50대 여성(어머니)</li>
+                <li><strong>여행 기간</strong>: 2025년 6월 말 ~ 7월 초, 5박 7일</li>
+                <li><strong>주요 베이스캠프</strong>: 오르티세이(2박), 코르티나 담페초(3박)</li>
+                <li><strong>교통수단</strong>: 렌트카</li>
+                <li><strong>여행 스타일</strong>: 여유롭게, 신체적 제약 고려, 자연경관 중심</li>
+            </ul>
+        </section>
+
+        <section class="toc">
+            <h2>목차</h2>
+            <ul>
+                <li><a href="#summary">1. 여행 일정 요약</a></li>
+                <li><a href="#daily">2. 일별 상세 일정</a></li>
+                <li><a href="#accommodation">3. 숙박 정보</a></li>
+                <li><a href="#transportation">4. 교통 정보</a></li>
+                <li><a href="#meals">5. 식사 계획</a></li>
+                <li><a href="#checklist">6. 준비물 체크리스트</a></li>
+                <li><a href="#info">7. 유용한 정보</a></li>
+                <li><a href="#emergency">8. 응급 상황 대비</a></li>
+            </ul>
+        </section>
+
+        <section id="summary">
+            <h2>1. 여행 일정 요약</h2>
+            
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>1일차: 서울 → 이탈리아 → 오르티세이</h3>
+                </div>
+                <div class="day-content">
+                    <ul>
+                        <li><strong>아침</strong>: 인천국제공항 출발</li>
+                        <li><strong>오후</strong>: 베니스 또는 밀라노 공항 도착, 렌트카 수령</li>
+                        <li><strong>저녁</strong>: 오르티세이 도착 및 체크인, 간단한 마을 산책</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>2일차: 오르티세이 - 세체다</h3>
+                </div>
+                <div class="day-content">
+                    <ul>
+                        <li><strong>아침</strong>: 세체다 케이블카 탑승</li>
+                        <li><strong>오후</strong>: 세체다 파노라마 감상, 짧은 산책</li>
+                        <li><strong>저녁</strong>: 오르티세이 마을에서 저녁 식사</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>3일차: 오르티세이 → 알페 디 시우시 → 코르티나 담페초</h3>
+                </div>
+                <div class="day-content">
+                    <ul>
+                        <li><strong>아침</strong>: 체크아웃, 알페 디 시우시 방문</li>
+                        <li><strong>오후</strong>: 코르티나 담페초로 이동</li>
+                        <li><strong>저녁</strong>: 코르티나 담페초 체크인 및 마을 탐방</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>4일차: 코르티나 담페초 - 트레 치메 디 라바레도</h3>
+                </div>
+                <div class="day-content">
+                    <ul>
+                        <li><strong>아침</strong>: 트레 치메 디 라바레도 방문</li>
+                        <li><strong>오후</strong>: 미수리나 호수 관광</li>
+                        <li><strong>저녁</strong>: 코르티나 담페초에서 저녁 식사</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>5일차: 코르티나 담페초 - 친퀘 토리</h3>
+                </div>
+                <div class="day-content">
+                    <ul>
+                        <li><strong>아침</strong>: 친퀘 토리 파노라마 포인트 방문</li>
+                        <li><strong>오후</strong>: 휴식 또는 선택 활동</li>
+                        <li><strong>저녁</strong>: 코르티나 담페초에서 저녁 식사</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>6일차: 코르티나 담페초 - 토파나</h3>
+                </div>
+                <div class="day-content">
+                    <ul>
+                        <li><strong>아침</strong>: 토파나 케이블카 탑승</li>
+                        <li><strong>오후</strong>: 파노라마 레스토랑에서 점심 및 경관 감상</li>
+                        <li><strong>저녁</strong>: 코르티나 담페초에서 마지막 저녁 식사</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>7일차: 코르티나 담페초 → 베니스/밀라노 → 서울</h3>
+                </div>
+                <div class="day-content">
+                    <ul>
+                        <li><strong>아침</strong>: 체크아웃, 공항으로 이동</li>
+                        <li><strong>오후</strong>: 렌트카 반납, 귀국 비행기 탑승</li>
+                        <li><strong>저녁</strong>: 기내에서 휴식</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="daily">
+            <h2>2. 일별 상세 일정</h2>
+            
+            <div id="map-overview" class="map-container"></div>
+            
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>1일차: 서울 → 이탈리아 → 오르티세이</h3>
+                </div>
+                <div class="day-content">
+                    <h4>아침</h4>
+                    <ul>
+                        <li>인천국제공항 출발 (항공편에 따라 시간 조정)</li>
+                        <li>기내에서 휴식, 영화 감상, 독서 등으로 시간 활용</li>
+                        <li><strong>신체적 제약 고려</strong>: 기내에서 주기적으로 스트레칭, 압박 스타킹 착용 권장</li>
+                    </ul>
+                    
+                    <h4>오후</h4>
+                    <ul>
+                        <li>베니스 마르코 폴로 공항 또는 밀라노 말펜사 공항 도착</li>
+                        <li>입국 수속 및 수하물 수령</li>
+                        <li>공항 내 렌트카 업체에서 차량 수령
+                            <ul>
+                                <li>추천: 중형 SUV (편안한 승차감과 충분한 트렁크 공간)</li>
+                                <li>자동변속기 옵션 선택</li>
+                            </ul>
+                        </li>
+                        <li>오르티세이로 이동 (베니스에서 약 3시간, 밀라노에서 약 4시간)</li>
+                        <li><strong>신체적 제약 고려</strong>: 1-2시간마다 휴게소에서 휴식 취하기</li>
+                    </ul>
+                    
+                    <div class="location-info">
+                        <div class="location-details">
+                            <h4>베니스 마르코 폴로 공항</h4>
+                            <p>베니스 마르코 폴로 공항은 이탈리아 베네토 지역의 주요 국제공항으로, 돌로미티 동부 접근 시 유리한 위치에 있습니다.</p>
+                        </div>
+                        <div id="map-venice-airport" class="location-map"></div>
+                    </div>
+                    
+                    <h4>저녁</h4>
+                    <ul>
+                        <li>오르티세이 도착 및 호텔 체크인</li>
+                        <li>호텔 주변 간단한 산책으로 마을 분위기 파악</li>
+                        <li>호텔 내 또는 가까운 레스토랑에서 저녁 식사</li>
+                        <li><strong>추천 식당</strong>: Mauriz Keller (현지 전통 요리)</li>
+                        <li>일찍 취침하여 시차 적응</li>
+                    </ul>
+                    
+                    <div class="location-info">
+                        <div class="location-details">
+                            <h4>오르티세이 (Ortisei)</h4>
+                            <p>오르티세이는 돌로미티의 발 가르데나(Val Gardena) 지역에 위치한 아름다운 마을로, 세체다 산맥으로의 접근이 용이하며 전통적인 티롤 문화를 경험할 수 있는 곳입니다.</p>
+                        </div>
+                        <div id="map-ortisei" class="location-map"></div>
+                    </div>
+                    
+                    <h4>숙박</h4>
+                    <ul>
+                        <li><strong>추천 숙소</strong>: Hotel Gardena Grödnerhof 또는 Villa Erina</li>
+                        <li><strong>선택 이유</strong>: 마을 중심부에 위치, 엘리베이터 구비, 편안한 객실</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>2일차: 오르티세이 - 세체다</h3>
+                </div>
+                <div class="day-content">
+                    <h4>아침</h4>
+                    <ul>
+                        <li>호텔에서 여유로운 아침 식사</li>
+                        <li>오르티세이 마을에서 세체다 케이블카 탑승장으로 이동 (차량 5분)</li>
+                        <li>세체다 케이블카 탑승 (약 15분 소요)
+                            <ul>
+                                <li>첫 번째 구간: 오르티세이 → 푸르쉐스</li>
+                                <li>두 번째 구간: 푸르쉐스 → 세체다</li>
+                            </ul>
+                        </li>
+                        <li><strong>신체적 제약 고려</strong>: 케이블카 탑승 시 도움이 필요하면 직원에게 요청</li>
+                    </ul>
+                    
+                    <div class="location-info">
+                        <div class="location-details">
+                            <h4>세체다 (Seceda)</h4>
+                            <p>세체다는 돌로미티에서 가장 인상적인 산맥 중 하나로, 2,500m 고도에서 놀라운 파노라마 전망을 제공합니다. 특히 톱니 모양의 산맥 실루엣이 유명합니다.</p>
+                        </div>
+                        <div id="map-seceda" class="location-map"></div>
+                    </div>
+                    
+                    <h4>오후</h4>
+                    <ul>
+                        <li>세체다 정상에서 파노라마 뷰 감상 (2,500m 고도)</li>
+                        <li>세체다 산장에서 점심 식사
+                            <ul>
+                                <li><strong>추천 메뉴</strong>: 크뇌델 수프, 애플 슈트루델</li>
+                            </ul>
+                        </li>
+                        <li>체력에 맞는 짧은 산책로 선택 (30-60분)
+                            <ul>
+                                <li><strong>추천 코스</strong>: 세체다 파노라마 트레일 (완만한 지형, 경사 적음)</li>
+                            </ul>
+                        </li>
+                        <li>케이블카로 오르티세이로 하산</li>
+                        <li>호텔에서 휴식</li>
+                    </ul>
+                    
+                    <h4>저녁</h4>
+                    <ul>
+                        <li>오르티세이 마을 중심가에서 저녁 식사
+                            <ul>
+                                <li><strong>추천 식당</strong>: Ristorante El Tobià (정통 돌로미티 요리)</li>
+                                <li><strong>추천 메뉴</strong>: 폴렌타, 슈페크</li>
+                            </ul>
+                        </li>
+                        <li>마을 산책 및 기념품 쇼핑</li>
+                        <li>호텔로 돌아와 휴식</li>
+                    </ul>
+                    
+                    <h4>활동 난이도</h4>
+                    <ul>
+                        <li><strong>세체다 파노라마 감상</strong>: ★☆☆ (케이블카로 쉽게 접근 가능)</li>
+                        <li><strong>짧은 산책</strong>: ★★☆ (완만한 지형, 30-60분 소요)</li>
+                        <li><strong>대안 활동</strong>: 산책 대신 산장 테라스에서 경치 감상</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>3일차: 오르티세이 → 알페 디 시우시 → 코르티나 담페초</h3>
+                </div>
+                <div class="day-content">
+                    <h4>아침</h4>
+                    <ul>
+                        <li>호텔에서 아침 식사 후 체크아웃</li>
+                        <li>짐을 차에 싣고 알페 디 시우시로 이동 (차량 30분)</li>
+                        <li>알페 디 시우시 케이블카 탑승 (약 15분 소요)</li>
+                        <li><strong>신체적 제약 고려</strong>: 짐은 차에 두고 필요한 물품만 작은 배낭에 담아 이동</li>
+                    </ul>
+                    
+                    <div class="location-info">
+                        <div class="location-details">
+                            <h4>알페 디 시우시 (Alpe di Siusi)</h4>
+                            <p>알페 디 시우시는 유럽에서 가장 큰 고원 중 하나로, 넓은 초원과 주변의 돌로미티 산맥이 어우러진 아름다운 풍경을 자랑합니다. 완만한 지형으로 접근성이 좋습니다.</p>
+                        </div>
+                        <div id="map-alpe-di-siusi" class="location-map"></div>
+                    </div>
+                    
+                    <h4>오후</h4>
+                    <ul>
+                        <li>알페 디 시우시 고원에서 파노라마 감상</li>
+                        <li>산장에서 점심 식사
+                            <ul>
+                                <li><strong>추천 메뉴</strong>: 티롤리안 그릴 플래터, 현지 치즈</li>
+                            </ul>
+                        </li>
+                        <li>비엘 델 판(Viel del Pan) 짧은 산책로 체험 (30-45분)
+                            <ul>
+                                <li>마르몰라다 빙하 전망이 뛰어난 완만한 코스</li>
+                            </ul>
+                        </li>
+                        <li>코르티나 담페초로 이동 (차량 1시간 30분)</li>
+                        <li><strong>신체적 제약 고려</strong>: 이동 중간에 휴게소에서 휴식</li>
+                    </ul>
+                    
+                    <div class="location-info">
+                        <div class="location-details">
+                            <h4>코르티나 담페초 (Cortina d'Ampezzo)</h4>
+                            <p>코르티나 담페초는 돌로미티의 '여왕'이라 불리는 고급 리조트 타운으로, 아름다운 산악 풍경과 세련된 쇼핑가, 다양한 레스토랑이 있습니다. 2026년 동계 올림픽 개최지이기도 합니다.</p>
+                        </div>
+                        <div id="map-cortina" class="location-map"></div>
+                    </div>
+                    
+                    <h4>저녁</h4>
+                    <ul>
+                        <li>코르티나 담페초 호텔 체크인</li>
+                        <li>호텔에서 잠시 휴식</li>
+                        <li>코르티나 담페초 중심가에서 저녁 식사
+                            <ul>
+                                <li><strong>추천 식당</strong>: La Montanara (전통 티롤 음식)</li>
+                                <li><strong>추천 메뉴</strong>: 슈니첼, 카르보나라 파스타</li>
+                            </ul>
+                        </li>
+                        <li>코르티나 담페초 마을 짧은 산책</li>
+                    </ul>
+                    
+                    <h4>숙박</h4>
+                    <ul>
+                        <li><strong>추천 숙소</strong>: FIORI DOLOMITES EXPERIENCE HOTEL 또는 Hotel de Len</li>
+                        <li><strong>선택 이유</strong>: 중심부 위치, 엘리베이터 구비, 스파 시설 보유</li>
+                    </ul>
+                    
+                    <h4>활동 난이도</h4>
+                    <ul>
+                        <li><strong>알페 디 시우시 방문</strong>: ★☆☆ (케이블카로 쉽게 접근 가능)</li>
+                        <li><strong>비엘 델 판 산책</strong>: ★★☆ (완만한 지형, 30-45분 소요)</li>
+                        <li><strong>대안 활동</strong>: 산책 대신 산장 테라스에서 경치 감상</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>4일차: 코르티나 담페초 - 트레 치메 디 라바레도</h3>
+                </div>
+                <div class="day-content">
+                    <h4>아침</h4>
+                    <ul>
+                        <li>호텔에서 여유로운 아침 식사</li>
+                        <li>트레 치메 디 라바레도로 이동 (차량 30분)</li>
+                        <li>리푸지오 아우론조 주차장에 주차</li>
+                        <li><strong>신체적 제약 고려</strong>: 주차장에서 가까운 전망대까지만 이동 계획</li>
+                    </ul>
+                    
+                    <div class="location-info">
+                        <div class="location-details">
+                            <h4>트레 치메 디 라바레도 (Tre Cime di Lavaredo)</h4>
+                            <p>트레 치메 디 라바레도는 돌로미티에서 가장 상징적인 세 개의 봉우리로, 독특한 형태와 웅장한 모습으로 유명합니다. 세계적으로 유명한 하이킹 코스가 있지만, 주차장에서도 멋진 전망을 감상할 수 있습니다.</p>
+                        </div>
+                        <div id="map-tre-cime" class="location-map"></div>
+                    </div>
+                    
+                    <h4>오후</h4>
+                    <ul>
+                        <li>트레 치메 디 라바레도 파노라마 감상</li>
+                        <li>리푸지오 아우론조에서 점심 식사
+                            <ul>
+                                <li><strong>추천 메뉴</strong>: 산악 리조또, 티롤리안 수프</li>
+                            </ul>
+                        </li>
+                        <li>미수리나 호수로 이동 (차량 15분)</li>
+                        <li>호수 주변 산책로 일부 체험 (30-45분)
+                            <ul>
+                                <li>평평한 지형으로 접근성 좋음</li>
+                            </ul>
+                        </li>
+                        <li>호텔로 돌아와 휴식</li>
+                        <li><strong>신체적 제약 고려</strong>: 필요시 호텔 스파에서 마사지 서비스 이용</li>
+                    </ul>
+                    
+                    <div class="location-info">
+                        <div class="location-details">
+                            <h4>미수리나 호수 (Lago di Misurina)</h4>
+                            <p>미수리나 호수는 '돌로미티의 진주'라 불리는 아름다운 산악 호수로, 트레 치메 디 라바레도의 멋진 전망을 제공합니다. 호수 주변은 평평한 산책로가 있어 접근성이 좋습니다.</p>
+                        </div>
+                        <div id="map-misurina" class="location-map"></div>
+                    </div>
+                    
+                    <h4>저녁</h4>
+                    <ul>
+                        <li>코르티나 담페초 중심가에서 저녁 식사
+                            <ul>
+                                <li><strong>추천 식당</strong>: Café Mozart (다양한 이탈리아 요리)</li>
+                                <li><strong>추천 메뉴</strong>: 파스타, 티라미수</li>
+                            </ul>
+                        </li>
+                        <li>마을 산책 및 쇼핑</li>
+                    </ul>
+                    
+                    <h4>활동 난이도</h4>
+                    <ul>
+                        <li><strong>트레 치메 디 라바레도 감상</strong>: ★★☆ (주차장에서 약간의 걷기 필요)</li>
+                        <li><strong>미수리나 호수 산책</strong>: ★☆☆ (평평한 지형, 30-45분 소요)</li>
+                        <li><strong>대안 활동</strong>: 차에서 경치 감상 가능한 드라이브 코스 선택</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>5일차: 코르티나 담페초 - 친퀘 토리</h3>
+                </div>
+                <div class="day-content">
+                    <h4>아침</h4>
+                    <ul>
+                        <li>호텔에서 아침 식사</li>
+                        <li>친퀘 토리(Cinque Torri) 지역으로 이동 (차량 20분)</li>
+                        <li>리푸지오 친퀘 토리 케이블카 탑승 (약 10분 소요)</li>
+                        <li><strong>신체적 제약 고려</strong>: 케이블카 역에서 가까운 전망대까지만 이동</li>
+                    </ul>
+                    
+                    <div class="location-info">
+                        <div class="location-details">
+                            <h4>친퀘 토리 (Cinque Torri)</h4>
+                            <p>친퀘 토리는 '다섯 개의 탑'이라는 의미로, 독특한 형태의 바위 기둥들이 모여 있는 지역입니다. 제1차 세계대전 야외 박물관이 있으며, 암벽 등반가들에게도 인기 있는 장소입니다.</p>
+                        </div>
+                        <div id="map-cinque-torri" class="location-map"></div>
+                    </div>
+                    
+                    <h4>오후</h4>
+                    <ul>
+                        <li>친퀘 토리 바위 기둥 파노라마 감상</li>
+                        <li>리푸지오 친퀘 토리에서 점심 식사
+                            <ul>
+                                <li><strong>추천 메뉴</strong>: 산악 샐러드, 슈페츨레</li>
+                            </ul>
+                        </li>
+                        <li>케이블카로 하산</li>
+                        <li>호텔로 돌아와 휴식</li>
+                        <li><strong>대안 활동</strong>: 코르티나 담페초 마을의 산악 박물관 방문
+                            <ul>
+                                <li>돌로미티 지역의 역사와 문화 전시</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <h4>저녁</h4>
+                    <ul>
+                        <li>코르티나 담페초에서 저녁 식사
+                            <ul>
+                                <li><strong>추천 식당</strong>: Agriturismo Maso Larciunei (농가 레스토랑)</li>
+                                <li><strong>추천 메뉴</strong>: 라비올리, 현지 와인</li>
+                            </ul>
+                        </li>
+                        <li>호텔에서 휴식</li>
+                    </ul>
+                    
+                    <h4>활동 난이도</h4>
+                    <ul>
+                        <li><strong>친퀘 토리 방문</strong>: ★☆☆ (케이블카로 쉽게 접근 가능)</li>
+                        <li><strong>전망대 산책</strong>: ★★☆ (약간의 걷기 필요, 30분 이내)</li>
+                        <li><strong>대안 활동</strong>: 산악 박물관 방문 (실내 활동)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>6일차: 코르티나 담페초 - 토파나</h3>
+                </div>
+                <div class="day-content">
+                    <h4>아침</h4>
+                    <ul>
+                        <li>호텔에서 아침 식사</li>
+                        <li>토파나 케이블카 탑승장으로 이동 (차량 10분)</li>
+                        <li>토파나 케이블카 탑승 (약 15분 소요)</li>
+                        <li><strong>신체적 제약 고려</strong>: 케이블카 탑승 시 도움이 필요하면 직원에게 요청</li>
+                    </ul>
+                    
+                    <div class="location-info">
+                        <div class="location-details">
+                            <h4>토파나 (Tofana)</h4>
+                            <p>토파나는 코르티나 담페초 근처의 웅장한 산맥으로, 케이블카를 통해 쉽게 접근할 수 있습니다. 정상에서는 돌로미티 전체를 조망할 수 있는 파노라마 뷰를 제공합니다.</p>
+                        </div>
+                        <div id="map-tofana" class="location-map"></div>
+                    </div>
+                    
+                    <h4>오후</h4>
+                    <ul>
+                        <li>토파나 정상에서 파노라마 감상</li>
+                        <li>파노라마 레스토랑에서 점심 식사
+                            <ul>
+                                <li><strong>추천 메뉴</strong>: 티롤리안 플래터, 애플 슈트루델</li>
+                            </ul>
+                        </li>
+                        <li>케이블카로 하산</li>
+                        <li>호텔에서 휴식</li>
+                        <li><strong>대안 활동</strong>: 코르티나 담페초 마을 내 젤라테리아 방문</li>
+                    </ul>
+                    
+                    <h4>저녁</h4>
+                    <ul>
+                        <li>코르티나 담페초에서 마지막 저녁 식사
+                            <ul>
+                                <li><strong>추천 식당</strong>: Bar Gelateria Pasticceria Marlene (다양한 이탈리아 요리와 디저트)</li>
+                                <li><strong>추천 메뉴</strong>: 피자, 젤라토</li>
+                            </ul>
+                        </li>
+                        <li>마을 마지막 산책 및 기념품 쇼핑</li>
+                        <li>호텔로 돌아와 짐 정리</li>
+                    </ul>
+                    
+                    <h4>활동 난이도</h4>
+                    <ul>
+                        <li><strong>토파나 방문</strong>: ★☆☆ (케이블카로 쉽게 접근 가능)</li>
+                        <li><strong>파노라마 감상</strong>: ★☆☆ (레스토랑에서 편안하게 감상 가능)</li>
+                        <li><strong>대안 활동</strong>: 마을 내 가벼운 산책 및 쇼핑</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="day-card">
+                <div class="day-header">
+                    <h3>7일차: 코르티나 담페초 → 베니스/밀라노 → 서울</h3>
+                </div>
+                <div class="day-content">
+                    <h4>아침</h4>
+                    <ul>
+                        <li>호텔에서 아침 식사 후 체크아웃</li>
+                        <li>베니스 또는 밀라노 공항으로 이동 (차량 3-4시간)</li>
+                        <li><strong>신체적 제약 고려</strong>: 1-2시간마다 휴게소에서 휴식 취하기</li>
+                    </ul>
+                    
+                    <h4>오후</h4>
+                    <ul>
+                        <li>공항 도착, 렌트카 반납</li>
+                        <li>체크인 및 출국 수속</li>
+                        <li>면세점 쇼핑 및 가벼운 식사</li>
+                        <li>귀국 비행기 탑승</li>
+                        <li><strong>신체적 제약 고려</strong>: 공항 내 이동 시 필요하면 휠체어 서비스 요청</li>
+                    </ul>
+                    
+                    <h4>저녁</h4>
+                    <ul>
+                        <li>기내에서 휴식, 영화 감상, 독서 등으로 시간 활용</li>
+                        <li><strong>신체적 제약 고려</strong>: 기내에서 주기적으로 스트레칭, 압박 스타킹 착용 권장</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="accommodation" class="accommodation">
+            <h2>3. 숙박 정보</h2>
+            
+            <h3>오르티세이 (2박)</h3>
+            
+            <h4>추천 숙소 1: Hotel Gardena Grödnerhof</h4>
+            <ul>
+                <li><strong>주소</strong>: Vidalong Street 3, 39046 Ortisei</li>
+                <li><strong>연락처</strong>: +39 0471 796315</li>
+                <li><strong>웹사이트</strong>: www.gardena.it</li>
+                <li><strong>특징</strong>:
+                    <ul>
+                        <li>5성급 호텔, 스파 시설 보유</li>
+                        <li>마을 중심부에 위치</li>
+                        <li>엘리베이터 구비</li>
+                        <li>레스토랑 보유</li>
+                        <li>주차장 제공</li>
+                    </ul>
+                </li>
+                <li><strong>예상 가격</strong>: 1박당 €300-400</li>
+            </ul>
+            
+            <div id="map-hotel-gardena" class="map-container"></div>
+            
+            <h4>추천 숙소 2: Villa Erina</h4>
+            <ul>
+                <li><strong>주소</strong>: Strada Promenade 1, 39046 Ortisei</li>
+                <li><strong>연락처</strong>: +39 0471 796303</li>
+                <li><strong>웹사이트</strong>: www.villa-erina.com</li>
+                <li><strong>특징</strong>:
+                    <ul>
+                        <li>4성급 호텔</li>
+                        <li>마을 중심부에 가까움</li>
+                        <li>엘리베이터 구비</li>
+                        <li>조용한 환경</li>
+                        <li>주차장 제공</li>
+                    </ul>
+                </li>
+                <li><strong>예상 가격</strong>: 1박당 €200-300</li>
+            </ul>
+            
+            <div id="map-villa-erina" class="map-container"></div>
+            
+            <h3>코르티나 담페초 (3박)</h3>
+            
+            <h4>추천 숙소 1: FIORI DOLOMITES EXPERIENCE HOTEL</h4>
+            <ul>
+                <li><strong>주소</strong>: Via Cesare Battisti 86, 32043 Cortina d'Ampezzo</li>
+                <li><strong>연락처</strong>: +39 0436 4271</li>
+                <li><strong>웹사이트</strong>: www.fioridolomites.com</li>
+                <li><strong>특징</strong>:
+                    <ul>
+                        <li>4성급 호텔, 스파 시설 보유</li>
+                        <li>마을 중심부에 위치</li>
+                        <li>엘리베이터 구비</li>
+                        <li>레스토랑 보유</li>
+                        <li>주차장 제공</li>
+                    </ul>
+                </li>
+                <li><strong>예상 가격</strong>: 1박당 €250-350</li>
+            </ul>
+            
+            <div id="map-fiori-dolomites" class="map-container"></div>
+            
+            <h4>추천 숙소 2: Hotel de Len</h4>
+            <ul>
+                <li><strong>주소</strong>: Corso Italia 233, 32043 Cortina d'Ampezzo</li>
+                <li><strong>연락처</strong>: +39 0436 4246</li>
+                <li><strong>웹사이트</strong>: www.hoteldelen.it</li>
+                <li><strong>특징</strong>:
+                    <ul>
+                        <li>4성급 호텔</li>
+                        <li>마을 중심부에 위치</li>
+                        <li>엘리베이터 구비</li>
+                        <li>스파 시설 보유</li>
+                        <li>주차장 제공</li>
+                    </ul>
+                </li>
+                <li><strong>예상 가격</strong>: 1박당 €200-300</li>
+            </ul>
+            
+            <div id="map-hotel-de-len" class="map-container"></div>
+            
+            <h3>예약 팁</h3>
+            <ul>
+                <li>6월 말~7월 초는 성수기 시작 시점으로, 최소 6개월 전 예약 권장</li>
+                <li>예약 시 신체적 제약 사항을 미리 알려 적절한 객실 배정 요청</li>
+                <li>엘리베이터가 있는지, 객실과 로비/레스토랑 간 계단이 있는지 확인</li>
+                <li>호텔 내 레스토랑 유무 확인 (피로할 때 편리)</li>
+                <li>주차 가능 여부 및 주차장에서 호텔 입구까지의 접근성 확인</li>
+                <li>취소 정책 확인 (날씨나 건강 상태에 따른 일정 변경 가능성 고려)</li>
+            </ul>
+        </section>
+
+        <section id="transportation" class="transportation">
+            <h2>4. 교통 정보</h2>
+            
+            <h3>항공 정보</h3>
+            <ul>
+                <li><strong>출발</strong>: 인천국제공항</li>
+                <li><strong>도착 옵션</strong>:
+                    <ul>
+                        <li>베니스 마르코 폴로 공항 (돌로미티 동부 접근 시 유리)</li>
+                        <li>밀라노 말펜사 공항 (항공편이 더 다양할 수 있음)</li>
+                    </ul>
+                </li>
+                <li><strong>항공사 옵션</strong>: 대한항공, 아시아나항공, 알리탈리아, 루프트한자</li>
+                <li><strong>예상 비용</strong>: 성수기 제외 비즈니스석 200-260만원 선</li>
+                <li><strong>소요 시간</strong>: 약 12-14시간 (직항 기준)</li>
+                <li><strong>예약 팁</strong>:
+                    <ul>
+                        <li>좌석은 통로쪽 선택 (화장실 접근성)</li>
+                        <li>비즈니스석 고려 (장시간 비행 시 편안함)</li>
+                        <li>항공사 휠체어 서비스 사전 요청 가능</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>렌트카 정보</h3>
+            <ul>
+                <li><strong>추천 차종</strong>: 중형 SUV (편안한 승차감, 충분한 트렁크 공간)</li>
+                <li><strong>필수 옵션</strong>: 자동변속기, 내비게이션, 에어컨</li>
+                <li><strong>렌트 업체</strong>: Hertz, Avis, Europcar, Sixt</li>
+                <li><strong>예상 비용</strong>: 일 €70-100</li>
+                <li><strong>필요 서류</strong>:
+                    <ul>
+                        <li>국제운전면허증</li>
+                        <li>신용카드</li>
+                        <li>여권</li>
+                    </ul>
+                </li>
+                <li><strong>보험 옵션</strong>:
+                    <ul>
+                        <li>CDW (Collision Damage Waiver): 충돌 손해 면책</li>
+                        <li>TP (Theft Protection): 도난 보험</li>
+                        <li>PAI (Personal Accident Insurance): 탑승자 상해 보험</li>
+                    </ul>
+                </li>
+                <li><strong>주의사항</strong>:
+                    <ul>
+                        <li>ZTL (Zona Traffico Limitato): 차량 통제 구역 진입 금지</li>
+                        <li>고속도로 통행료: 요금소 또는 Vignette(비네트) 시스템</li>
+                        <li>주차: 파란색 선 (유료), 흰색 선 (무료), 노란색 선 (주차 금지)</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>돌로미티 내 이동</h3>
+            <ul>
+                <li><strong>주요 산악 도로</strong>:
+                    <ul>
+                        <li>셀라 패스 (Sella Pass): 오르티세이와 코르티나 담페초 연결</li>
+                        <li>팔자레고 패스 (Falzarego Pass): 코르티나 담페초 접근</li>
+                        <li>포르도이 패스 (Pordoi Pass): 아라바 계곡 접근</li>
+                    </ul>
+                </li>
+                <li><strong>대중교통 옵션</strong> (렌트카 불가 시):
+                    <ul>
+                        <li>지역 버스: SAD, Dolomiti Bus 운영</li>
+                        <li>셔틀 버스: 주요 관광지 연결</li>
+                        <li>택시: 주요 마을에서 이용 가능</li>
+                    </ul>
+                </li>
+                <li><strong>케이블카 및 리프트</strong>:
+                    <ul>
+                        <li>돌로미티 수퍼 섬머 카드: 다수의 케이블카 무제한 이용 가능</li>
+                        <li>주요 케이블카: 세체다, 알페 디 시우시, 토파나, 친퀘 토리</li>
+                    </ul>
+                </li>
+                <li><strong>신체적 제약 고려 전략</strong>:
+                    <ul>
+                        <li>주요 관광지 주차장에서 케이블카로 바로 연결되는 코스 선택</li>
+                        <li>이동 간 충분한 휴식 시간 확보</li>
+                        <li>주차장에서 관광지까지 거리 사전 확인</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <h3>이동 거리 및 소요 시간</h3>
+            <ul>
+                <li>베니스 공항 → 오르티세이: 약 190km, 3시간</li>
+                <li>밀라노 공항 → 오르티세이: 약 330km, 4시간</li>
+                <li>오르티세이 → 알페 디 시우시: 약 20km, 30분</li>
+                <li>알페 디 시우시 → 코르티나 담페초: 약 70km, 1시간 30분</li>
+                <li>코르티나 담페초 → 트레 치메: 약 20km, 30분</li>
+                <li>코르티나 담페초 → 친퀘 토리: 약 15km, 20분</li>
+                <li>코르티나 담페초 → 베니스 공항: 약 160km, 2시간 30분</li>
+            </ul>
+            
+            <div id="map-route" class="map-container"></div>
+        </section>
+
+        <section id="meals" class="meal-plan">
+            <h2>5. 식사 계획</h2>
+            <!-- 식사 계획 내용 -->
+        </section>
+
+        <section id="checklist" class="checklist">
+            <h2>6. 준비물 체크리스트</h2>
+            <!-- 준비물 체크리스트 내용 -->
+        </section>
+
+        <section id="info" class="info">
+            <h2>7. 유용한 정보</h2>
+            <!-- 유용한 정보 내용 -->
+        </section>
+
+        <section id="emergency" class="emergency">
+            <h2>8. 응급 상황 대비</h2>
+            <!-- 응급 상황 대비 내용 -->
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 돌로미티 모자 여행 계획서</p>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+</html>
