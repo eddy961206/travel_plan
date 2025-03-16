@@ -108,4 +108,36 @@ $(document).ready(function() {
 
     // 첫 번째 일차는 기본으로 펼치기
     $('.day-header:first').click();
+
+    // 사이드바 생성 및 스크롤 감지
+    const tocContent = $('.toc').html();
+    $('body').append(`<div class="toc-sidebar">${tocContent}</div>`);
+
+    // 스크롤 이벤트 핸들러
+    $(window).scroll(function() {
+        const currentPosition = $(this).scrollTop() + 100;
+        
+        $('section').each(function() {
+            const sectionTop = $(this).offset().top;
+            const sectionBottom = sectionTop + $(this).outerHeight();
+            
+            if (currentPosition >= sectionTop && currentPosition <= sectionBottom) {
+                const id = $(this).attr('id');
+                $('.toc-sidebar a').removeClass('active');
+                $(`.toc-sidebar a[href="#${id}"]`).addClass('active');
+            }
+        });
+    });
+
+    // 부드러운 스크롤
+    $('.toc-sidebar a').click(function(e) {
+        e.preventDefault();
+        const target = $($(this).attr('href'));
+        if (target.length) {
+            $('html, body').animate({
+                scrollTop: target.offset().top - 80
+            }, 800);
+        }
+    });
+    
 });
